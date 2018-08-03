@@ -1,8 +1,5 @@
 const config = {attributes: false, childList: true, characterData: false, subtree: true};
 
-console.log("Hello, world!");
-
-
 const htmlBody = $("body")[0];
 const chatLoadedObserver = new MutationObserver(function (mutations, observer) {
     const scrollPanels = $(".customScrollBar .scrollContainer");
@@ -16,10 +13,7 @@ const chatLoadedObserver = new MutationObserver(function (mutations, observer) {
                     $(addedNode)
                         .find('div.ms-fcl-tp:has(span)')
                         .each(function () {
-                            console.log($(this));
-                            console.log($(this).text());
                             chrome.runtime.sendMessage({message: $(this).text()}, function (response) {
-                                console.log(response.result);
                             });
 
                         });
