@@ -19,3 +19,20 @@ chrome.runtime.onInstalled.addListener(function () {
         }]);
     });
 });
+
+chrome.runtime.onMessage.addListener(
+    function (request, sender, sendResponse) {
+        console.log(sender.tab ?
+            "from a content script:" + sender.tab.url :
+            "from the extension");
+        if (request.message)
+            chrome.notifications.create('reminder', {
+                type: 'basic',
+                title: 'You have a mail!',
+                message: request.message
+            }, function (notificationId) {
+
+            });
+    });
+
+

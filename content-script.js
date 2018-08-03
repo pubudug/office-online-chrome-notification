@@ -1,25 +1,32 @@
-var config = {attributes: false, childList: true, characterData: false};
+const config = {attributes: false, childList: true, characterData: false, subtree: true};
 
 console.log("Hello, world!");
 
 
-var htmlBody = $("body")[0];
-var chatLoadedObserver = new MutationObserver(function (mutations, observer) {
-    mutations.forEach(function (mutation) {
-        var scrollPanels = $(".customScrollBar .scrollContainer");
-        console.log(scrollPanels);
-        // if (chatSelector.length > 0) {
-        //     // Select the node element.
-        //     var target = chatSelector[0];
-        //
-        //     // Pass in the target node, as well as the observer options
-        //     bardFinder.observe(target, config);
-        //
-        //     // Unregister chatLoadedObserver. We don't need to check for the chat element anymore.
-        //     observer.disconnect();
-        // }
+const htmlBody = $("body")[0];
+const chatLoadedObserver = new MutationObserver(function (mutations, observer) {
+    const scrollPanels = $(".customScrollBar .scrollContainer");
+    if (scrollPanels.length > 1) {
+        //we found the Inbox area panel. So we can monitor only that part fromm now on
         observer.disconnect();
-    })
+
+        const inboxAreaObserver = new MutationObserver(function (mutations, observer) {
+            mutations.forEach(function (mutation) {
+                mutation.addedNodes.forEach(function (addedNode) {
+                    $(addedNode)
+                        .find('div.ms-fcl-tp:has(span)')
+                        .each(function () {
+                            console.log($(this));
+                            console.log($(this).text());
+                            chrome.runtime.sendMessage({message: $(this).text()});
+
+                        });
+                });
+            });
+        });
+
+        inboxAreaObserver.observe(scrollPanels[1], config)
+    }
 });
 
 chatLoadedObserver.observe(htmlBody, config);

@@ -6,7 +6,8 @@
   "permissions": [
     "declarativeContent",
     "storage",
-    "activeTab"
+    "activeTab",
+    "notifications"
   ],
   "background": {
     "scripts": [
@@ -17,9 +18,9 @@
   "content_scripts": [
     {
       "matches": [
-          "*://outlook.office365.com/*"
-//        "https://outlook.office365.com/owa/?realm=zooplus.com&exsvurl=1&ll-cc=1033&modurl=0*",
-//        "https://outlook.office365.com/owa/?realm=zooplus.com&exsvurl=1&ll-cc=1033&modurl=0&path=/mail/inbox*"
+        "*://outlook.office365.com/*"
+        //        "https://outlook.office365.com/owa/?realm=zooplus.com&exsvurl=1&ll-cc=1033&modurl=0*",
+        //        "https://outlook.office365.com/owa/?realm=zooplus.com&exsvurl=1&ll-cc=1033&modurl=0&path=/mail/inbox*"
       ],
       "js": [
         "jquery-3.3.1.min.js",
