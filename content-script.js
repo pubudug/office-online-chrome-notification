@@ -18,7 +18,9 @@ const chatLoadedObserver = new MutationObserver(function (mutations, observer) {
                         .each(function () {
                             console.log($(this));
                             console.log($(this).text());
-                            chrome.runtime.sendMessage({message: $(this).text()});
+                            chrome.runtime.sendMessage({message: $(this).text()}, function (response) {
+                                console.log(response.result);
+                            });
 
                         });
                 });
