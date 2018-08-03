@@ -4,6 +4,8 @@
 
 'use strict';
 
+var notId = 0;
+
 chrome.runtime.onInstalled.addListener(function () {
     chrome.storage.sync.set({color: '#3aa757'}, function () {
         console.log("The color is green.");
@@ -22,8 +24,18 @@ chrome.runtime.onInstalled.addListener(function () {
 
 chrome.runtime.onMessage.addListener(
     function (request, sender, sendResponse) {
-        if (request.message)
+        if (request.message) {
+            chrome.notifications.create("some string", {
+                type: "basic",
+                title: "Basic Notification",
+                message: "Short message part",
+                expandedMessage: "Longer part of the message",
+                iconUrl: chrome.runtime.getURL('/images/get_started128.png')
+            }, function (notificationId) {
+                console.log("Last error:", chrome.runtime.lastError);
+            });
             sendResponse({result: "success"});
+        }
         else
             sendResponse({result: "error"});
     });
