@@ -14,6 +14,20 @@
     ],
     "persistent": false
   },
+  "content_scripts": [
+    {
+      "matches": [
+          "*://outlook.office365.com/*"
+//        "https://outlook.office365.com/owa/?realm=zooplus.com&exsvurl=1&ll-cc=1033&modurl=0*",
+//        "https://outlook.office365.com/owa/?realm=zooplus.com&exsvurl=1&ll-cc=1033&modurl=0&path=/mail/inbox*"
+      ],
+      "js": [
+        "jquery-3.3.1.min.js",
+        "content-script.js"
+      ],
+      "run_at": "document_end"
+    }
+  ],
   "page_action": {
     "default_popup": "popup.html",
     "default_icon": {
