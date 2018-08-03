@@ -29,7 +29,7 @@ chrome.runtime.onMessage.addListener(
                 type: "basic",
                 title: "Basic Notification",
                 message: request.message,
-                iconUrl: chrome.runtime.getURL('/images/get_started128.png')
+                iconUrl: chrome.runtime.getURL('/images/mail-128.png')
             }, function (notificationId) {
                 console.log("Last error:", chrome.runtime.lastError);
             });

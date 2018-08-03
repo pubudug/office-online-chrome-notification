@@ -1,7 +1,7 @@
 {
-  "name": "Getting Started Example",
+  "name": "Office Online Email Notification",
   "version": "1.0",
-  "description": "Build an Extension!",
+  "description": "Shows a notification when you recieve email on office online",
   "options_page": "options.html",
   "permissions": [
     "declarativeContent",
@@ -32,17 +32,17 @@
   "page_action": {
     "default_popup": "popup.html",
     "default_icon": {
-      "16": "images/get_started16.png",
-      "32": "images/get_started32.png",
-      "48": "images/get_started48.png",
-      "128": "images/get_started128.png"
+      "16": "images/mail-16.png",
+      "32": "images/mail-32.png",
+      "48": "images/mail-48.png",
+      "128": "images/mail-128.png"
     }
   },
   "icons": {
-    "16": "images/get_started16.png",
-    "32": "images/get_started32.png",
-    "48": "images/get_started48.png",
-    "128": "images/get_started128.png"
+    "16": "images/mail-16.png",
+    "32": "images/mail-32.png",
+    "48": "images/mail-48.png",
+    "128": "images/mail-128.png"
   },
   "manifest_version": 2
 }
