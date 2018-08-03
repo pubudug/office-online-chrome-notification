@@ -25,11 +25,10 @@ chrome.runtime.onInstalled.addListener(function () {
 chrome.runtime.onMessage.addListener(
     function (request, sender, sendResponse) {
         if (request.message) {
-            chrome.notifications.create("some string", {
+            chrome.notifications.create({
                 type: "basic",
                 title: "Basic Notification",
-                message: "Short message part",
-                expandedMessage: "Longer part of the message",
+                message: request.message,
                 iconUrl: chrome.runtime.getURL('/images/get_started128.png')
             }, function (notificationId) {
                 console.log("Last error:", chrome.runtime.lastError);
