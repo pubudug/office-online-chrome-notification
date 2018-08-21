@@ -10,8 +10,8 @@ chrome.runtime.onInstalled.addListener(function () {
     chrome.storage.sync.set({color: '#3aa757'}, function () {
         console.log("The color is green.");
     });
-
-
+new building
+new building
     chrome.declarativeContent.onPageChanged.removeRules(undefined, function () {
         chrome.declarativeContent.onPageChanged.addRules([{
             conditions: [new chrome.declarativeContent.PageStateMatcher({
@@ -27,7 +27,7 @@ chrome.runtime.onMessage.addListener(
         if (request.message) {
             chrome.notifications.create({
                 type: "basic",
-                title: "Basic Notification",
+                title: "You have an email",
                 message: request.message,
                 iconUrl: chrome.runtime.getURL('/images/mail-128.png')
             }, function (notificationId) {
